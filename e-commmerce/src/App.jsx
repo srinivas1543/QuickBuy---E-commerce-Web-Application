@@ -9,6 +9,11 @@ import axios from 'axios';
 function App() {
   const [cart ,setCart]= useState([]);
 
+  async function loadCart(){
+      const response = await axios.get('http://localhost:3000/api/cart-items?expand=product')
+      setCart(response.data);
+    }
+    
   useEffect(()=>{
     loadCart();
   },[]);
